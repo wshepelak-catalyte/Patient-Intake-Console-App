@@ -12,26 +12,25 @@ class Database:
         """Gets the next patient ID by counting existing patients."""
         return len(self.patients) + 1
 
-    def create_patient(self) -> None:
+    def create_patient(self, patient_input: dict) -> None:
         """Creates a new patient and saves it to the database."""
-        raw_input = collect_raw_patient_input()
         patient = Patient(
             id=self.get_next_patient_id(),
-            first_name=raw_input["first_name"],
-            last_name=raw_input["last_name"],
-            ssn=raw_input["ssn"],
-            email=raw_input["email"],
+            first_name=patient_input["first_name"],
+            last_name=patient_input["last_name"],
+            ssn=patient_input["ssn"],
+            email=patient_input["email"],
             address=Address(
-                street=raw_input["address"]["street"],
-                city=raw_input["address"]["city"],
-                state=raw_input["address"]["state"],
-                zip_code=raw_input["address"]["zip_code"]
+                street=patient_input["address"]["street"],
+                city=patient_input["address"]["city"],
+                state=patient_input["address"]["state"],
+                zip_code=patient_input["address"]["zip_code"]
             ),
-            age=int(raw_input["age"]),
-            height=float(raw_input["height"]) if raw_input["height"] else None,
-            weight=float(raw_input["weight"]) if raw_input["weight"] else None,
-            gender=Gender(raw_input["gender"]),
-            insurance=raw_input["insurance"]
+            age=int(patient_input["age"]),
+            height=float(patient_input["height"]) if patient_input["height"] else None,
+            weight=float(patient_input["weight"]) if patient_input["weight"] else None,
+            gender=Gender(patient_input["gender"]),
+            insurance=patient_input["insurance"]
         )
         # Save the patient to the database
         self.save_patient(patient)
