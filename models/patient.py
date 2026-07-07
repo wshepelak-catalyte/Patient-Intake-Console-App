@@ -16,8 +16,8 @@ class Patient:
     email (str): The email address of the patient.
     address (Address): The physical address of the patient.
     age (int): The age of the patient.
-    height (float): The height of the patient in centimeters.
-    weight (float): The weight of the patient in kilograms.
+    height (float): The height of the patient in inches.
+    weight (float): The weight of the patient in pounds.
     gender (enum): The gender of the patient, represented as an enumeration (e.g., Male, Female, Other).
     insurance (str): The insurance provider of the patient.
     '''
@@ -27,8 +27,8 @@ class Patient:
     ssn: str = ""
     email: str = ""
     address: 'Address' = None
-    age: int = 0
-    height: Optional[float] = None
-    weight: Optional[float] = None
+    age: str = ""
+    height: Optional[str] = None
+    weight: Optional[str] = None
     gender: 'Gender' = None
     insurance: str = ""
