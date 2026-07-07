@@ -1,24 +1,122 @@
+from validation.validators import (
+    is_valid_name, is_valid_last_name, is_valid_ssn, is_valid_email,
+    is_valid_street, is_valid_city, is_valid_state, zip_code_is_valid,
+    is_valid_age, is_valid_height, is_valid_weight, is_valid_gender,
+    is_valid_insurance
+)
+
 def collect_raw_patient_input() -> dict:
     """
-    Collects raw patient input from the user.
+    Collects and validates patient input from the user.
 
     Returns:
-        dict: A dictionary containing the raw patient input.
+        dict: A dictionary containing the validated patient input.
     """
+    # First name with validation
+    while True:
+        first_name = input("Enter first name: ").strip()
+        if is_valid_name(first_name):
+            break
+        print("Invalid first name. Use letters only (max 30 characters).")
+    
+    # Last name with validation
+    while True:
+        last_name = input("Enter last name: ").strip()
+        if is_valid_last_name(last_name):
+            break
+        print("Invalid last name. Use letters only (max 30 characters).")
+    
+    # SSN with validation
+    while True:
+        ssn = input("Enter social security number (SSN) in format XXX-XX-XXXX: ").strip()
+        if is_valid_ssn(ssn):
+            break
+        print("Invalid SSN. Use format XXX-XX-XXXX (e.g., 123-45-6789).")
+    
+    # Email with validation
+    while True:
+        email = input("Enter email address: ").strip()
+        if is_valid_email(email):
+            break
+        print("Invalid email. Use format name@domain.com.")
+    
+    # Street with validation
+    while True:
+        street = input("Enter street address: ").strip()
+        if is_valid_street(street):
+            break
+        print("Invalid street address. Use letters, numbers, and symbols only (max 30 characters).")
+    
+    # City with validation
+    while True:
+        city = input("Enter city: ").strip()
+        if is_valid_city(city):
+            break
+        print("Invalid city. Use letters only (max 30 characters).")
+    
+    # State with validation
+    while True:
+        state = input("Enter state (two-letter code, e.g., CA): ").strip().upper()
+        if is_valid_state(state):
+            break
+        print("Invalid state. Use a valid two-letter state code (e.g., CA, NY, TX).")
+    
+    # Zip code with validation
+    while True:
+        zip_code = input("Enter zip code (XXXXX or XXXXX-XXXX): ").strip()
+        if zip_code_is_valid(zip_code):
+            break
+        print("Invalid zip code. Use format XXXXX or XXXXX-XXXX (e.g., 90210 or 90210-1234).")
+    
+    # Age with validation
+    while True:
+        age = input("Enter age: ").strip()
+        if is_valid_age(age):
+            break
+        print("Invalid age. Enter a number between 0 and 120.")
+    
+    # Height with validation (optional)
+    while True:
+        height = input("Enter height in centimeters (optional, press Enter to skip): ").strip()
+        if is_valid_height(height):
+            break
+        print("Invalid height. Enter a number between 0 and 108 or leave blank.")
+    
+    # Weight with validation (optional)
+    while True:
+        weight = input("Enter weight in kilograms (optional, press Enter to skip): ").strip()
+        if is_valid_weight(weight):
+            break
+        print("Invalid weight. Enter a number between 0 and 1400 or leave blank.")
+    
+    # Gender with validation
+    while True:
+        gender = input("Enter gender (Male/Female/Other): ").strip()
+        if is_valid_gender(gender):
+            break
+        print("Invalid gender. Choose from: Male, Female, or Other.")
+    
+    # Insurance with validation
+    while True:
+        insurance = input("Enter insurance provider: ").strip()
+        if is_valid_insurance(insurance):
+            break
+        print("Invalid insurance. Use letters, numbers, and symbols only (max 50 characters).")
+    
     return {
-        "first_name": input("Enter first name: ").strip(),
-        "last_name": input("Enter last name: ").strip(),
-        "ssn": input("Enter social security number (SSN): ").strip(),
-        "email": input("Enter email address: ").strip(),
+        "first_name": first_name,
+        "last_name": last_name,
+        "ssn": ssn,
+        "email": email,
         "address": {
-            "street": input("Enter street address: ").strip(),
-            "city": input("Enter city: ").strip(),
-            "state": input("Enter state: ").strip(),
-            "zip_code": input("Enter zip code: ").strip(),
+            "street": street,
+            "city": city,
+            "state": state,
+            "zip_code": zip_code,
         },
-        "age": input("Enter age: ").strip(),
-        "height": input("Enter height in centimeters: ").strip(),
-        "weight": input("Enter weight in kilograms: ").strip(),
-        "gender": input("Enter gender (Male/Female/Other): ").strip(),
-        "insurance": input("Enter insurance provider: ").strip(),
+        "age": age,
+        "height": height,
+        "weight": weight,
+        "gender": gender,
+        "insurance": insurance,
     }

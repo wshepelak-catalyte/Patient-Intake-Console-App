@@ -14,7 +14,7 @@ def is_valid_ssn(ssn: str) -> bool:
 
 def is_valid_email(email: str) -> bool:
     """Validates that the email is in a standard email format."""
-    return bool(re.match(r"^[A-Za-z0-9]+@[A-Za-z]+\.[A-Za-z]+$", email)) and bool(re.match(r"^{5,50}$", email))
+    return bool(re.match(r"^[A-Za-z0-9]+@[A-Za-z]+\.[A-Za-z]+$", email)) and bool(re.match(r"^.{5,50}$", email))
 
 def is_valid_street(street: str) -> bool:
     """Validates that the street address is not empty and contains valid characters."""
