@@ -22,7 +22,7 @@ def is_valid_street(street: str) -> bool:
 
 def is_valid_city(city: str) -> bool:
     """Validates that the city name contains only letters and is not empty."""
-    return bool(re.match(r"^[A-Za-z.,'-\s]{1,30}$", city))
+    return bool(re.match(r"^[A-Za-z\s.,'-]{1,30}$", city))
 
 def is_valid_state(state: str) -> bool:
     """Validates that the state is a valid two-letter state code."""
