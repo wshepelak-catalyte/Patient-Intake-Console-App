@@ -1,4 +1,6 @@
 from models.patient import Patient
+from models.address import Address
+from models.gender import Gender
 from storage.database import Database
 from ui.prompts import collect_raw_patient_input
 
@@ -79,9 +81,31 @@ def edit_patient() -> None:
         return
 
     print(f"Editing patient: {patient.first_name} {patient.last_name}")
-    patient_edit = collect_raw_patient_input()  # Collect new patient data
+    raw_input = collect_raw_patient_input()  # Collect new patient data
+    # Create a Patient object with the new data
+    updated_patient = Patient(
+        id=patient_id,
+        first_name=raw_input["first_name"],
+        last_name=raw_input["last_name"],
+        ssn=raw_input["ssn"],
+        email=raw_input["email"],
+        address=Address(
+            street=raw_input["address"]["street"],
+            city=raw_input["address"]["city"],
+            state=raw_input["address"]["state"],
+            zip_code=raw_input["address"]["zip_code"]
+        ),
+        age=int(raw_input["age"]),
+        height=float(raw_input["height"]) if raw_input["height"] else None,
+        weight=float(raw_input["weight"]) if raw_input["weight"] else None,
+        gender=Gender(raw_input["gender"]),
+        insurance=raw_input["insurance"]
+    )
     # Update the patient details
-    database.edit_patient(patient_id, patient_edit)
+    if database.edit_patient(patient_id, updated_patient):
+        print("Patient updated successfully.")
+    else:
+        print("Failed to update patient.")
 
 def delete_patient() -> None:
     print("\n=== Delete a Patient ===")
