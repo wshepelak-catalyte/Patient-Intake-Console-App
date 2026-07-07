@@ -18,7 +18,7 @@ def is_valid_email(email: str) -> bool:
 
 def is_valid_street(street: str) -> bool:
     """Validates that the street address is not empty and contains valid characters."""
-    return bool(re.match(r"^[A-Za-z0-9.,'-]{1,30}$", street))
+    return bool(re.match(r"^[A-Za-z0-9\s.,'-]{1,30}$", street))
 
 def is_valid_city(city: str) -> bool:
     """Validates that the city name contains only letters and is not empty."""
