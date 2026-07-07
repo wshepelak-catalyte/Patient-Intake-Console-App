@@ -4,6 +4,8 @@ from typing import Optional
 from models.address import Address
 from models.gender import Gender
 
+''' Patient class to represent a patient with personal and medical information.'''
+
 @dataclass
 class Patient:
     '''Attributes:
