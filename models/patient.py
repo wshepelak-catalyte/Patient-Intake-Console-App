@@ -9,6 +9,7 @@ from models.gender import Gender
 @dataclass
 class Patient:
     '''Attributes:
+    id (int): The unique identifier for the patient, auto-assigned starting from 1.
     first_name (str): The first name of the patient.
     last_name (str): The last name of the patient.
     ssn (str): The social security number of the patient.
@@ -20,13 +21,14 @@ class Patient:
     gender (enum): The gender of the patient, represented as an enumeration (e.g., Male, Female, Other).
     insurance (str): The insurance provider of the patient.
     '''
-    first_name: str
-    last_name: str
-    ssn: str
-    email: str
-    address: 'Address'
-    age: int
+    id: int = 0
+    first_name: str = ""
+    last_name: str = ""
+    ssn: str = ""
+    email: str = ""
+    address: 'Address' = None
+    age: int = 0
     height: Optional[float] = None
     weight: Optional[float] = None
-    gender: 'Gender'
-    insurance: str
+    gender: 'Gender' = None
+    insurance: str = ""
