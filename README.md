@@ -37,7 +37,7 @@ A console-based patient intake system that manages patient records entirely in m
 3. Install development tooling if desired:
 
    ```bash
-   pip install pylint pytest
+   pip install pylint pytest pytest-cov
    ```
 
 > Note: The current repository does not require any external runtime dependencies beyond the Python standard library.
@@ -97,12 +97,19 @@ pylint .
 
 ## Testing
 
-The repository currently does not include dedicated unit tests. The validation layer is intentionally separated from the console UI so that tests can be added for `validation/validators.py` without mocking user input.
+The repository includes unit tests for validation helpers and the `Patient` model.
+The validation layer is intentionally separated from the console UI so that tests can be added for `validation/validators.py` without mocking user input.
 
-A recommended test command once tests are added:
+Run tests with coverage:
 
 ```bash
-python -m pytest
+pytest
+```
+
+To generate an XML coverage report instead of a terminal summary:
+
+```bash
+pytest --cov=validation --cov-report=xml
 ```
 
 ## Known Limitations

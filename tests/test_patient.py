@@ -1,15 +1,16 @@
 """Tests for the Patient class in models/patient.py."""
 
+from unittest import mock
 from models.patient import Patient
 
 
-def test_patient_str_representation(mocker):
+def test_patient_str_representation():
     """Test the string representation of the Patient class."""
     mock_name = "John"
     mock_last_name = "Doe"
     mock_ssn = "123-45-6789"
     mock_email = "john.doe@example.com"
-    mock_address = mocker.Mock()
+    mock_address = mock.Mock()
     mock_address.street = "123 Main St"
     mock_address.city = "Anytown"
     mock_address.state = "CA"
@@ -17,7 +18,7 @@ def test_patient_str_representation(mocker):
     mock_age = 30
     mock_height = 70
     mock_weight = 180
-    mock_gender = mocker.Mock()
+    mock_gender = mock.Mock()
     mock_gender.value = "Male"
     mock_insurance = "Blue Cross"
 
