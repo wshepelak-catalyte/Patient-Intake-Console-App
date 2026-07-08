@@ -1,3 +1,8 @@
+"""
+Provides lookup tables for converting between U.S. state codes and full state
+names. Used by validation functions to ensure state inputs are valid.
+"""
+
 STATE_CODE_TO_NAME = {
     "AL": "Alabama",
     "AK": "Alaska",

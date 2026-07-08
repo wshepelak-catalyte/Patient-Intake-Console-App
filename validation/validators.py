@@ -64,7 +64,7 @@ def is_valid_weight(weight: str) -> bool:
 
 def is_valid_gender(gender: str) -> bool:
     """Validates that the gender is a valid input"""
-    return gender in ["Male", "Female", "Other"]   
+    return gender in ["Male", "Female", "Other"]
 
 def is_valid_insurance(insurance: str) -> bool:
     """Validates that the insurance is in a valid format"""
