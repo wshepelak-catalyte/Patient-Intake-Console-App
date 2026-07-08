@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 """Prompt helpers to gather and validate patient input from the user."""
 
 # pylint: disable=too-many-statements
@@ -7,10 +6,6 @@
 from models.gender import Gender
 from models.patient import Patient
 from storage.database import Database
-=======
-from models import patient
-from storage import database
->>>>>>> Stashed changes
 from validation.validators import (
     is_valid_name, is_valid_last_name, is_valid_ssn, is_valid_email,
     is_valid_street, is_valid_city, is_valid_state, zip_code_is_valid,
@@ -140,11 +135,7 @@ def collect_raw_patient_input(database : Database) -> dict:
         "insurance": insurance,
     }
 
-<<<<<<< Updated upstream
 def collect_patient_edits(database: Database, patient_id: int) -> Patient:
-=======
-def collect_patient_edits(patient_id: int) -> patient:
->>>>>>> Stashed changes
     """
     Collects and validates patient edits from the user.
 
@@ -184,24 +175,15 @@ def collect_patient_edits(patient_id: int) -> patient:
                     break
         elif field == "3":
             while True:
-<<<<<<< Updated upstream
                 ssn = input(
                     "Enter new social security number (SSN) in format XXX-XX-XXXX: ").strip()
                 if is_valid_ssn(database, ssn):
-=======
-                ssn = input("Enter new social security number (SSN) in format XXX-XX-XXXX: ").strip()
-                if is_valid_ssn(ssn):
->>>>>>> Stashed changes
                     patient.ssn = ssn
                     break
         elif field == "4":
             while True:
                 email = input("Enter new email address: ").strip()
-<<<<<<< Updated upstream
                 if is_valid_email(database, email):
-=======
-                if is_valid_email(email):
->>>>>>> Stashed changes
                     patient.email = email
                     break
         elif field == "5":
@@ -210,34 +192,21 @@ def collect_patient_edits(patient_id: int) -> patient:
                 if is_valid_street(street):
                     patient.address.street = street
                     break
-<<<<<<< Updated upstream
-=======
-        elif field == "6":
->>>>>>> Stashed changes
             while True:
                 city = input("Enter new city: ").strip()
                 if is_valid_city(city):
                     patient.address.city = city
                     break
-<<<<<<< Updated upstream
-=======
-        elif field == "7":
->>>>>>> Stashed changes
             while True:
                 state = input("Enter new state (two-Letter code, e.g., CA): ").strip().upper()
                 if is_valid_state(state):
                     patient.address.state = state
                     break
-<<<<<<< Updated upstream
-=======
-        elif field == "8":
->>>>>>> Stashed changes
             while True:
                 zip_code = input("Enter new zip code (XXXXX or XXXXX-XXXX): ").strip()
                 if zip_code_is_valid(zip_code):
                     patient.address.zip_code = zip_code
                     break
-<<<<<<< Updated upstream
         elif field == "6":
             while True:
                 age_raw = input("Enter new age: ").strip()
@@ -274,9 +243,3 @@ def collect_patient_edits(patient_id: int) -> patient:
                     patient.insurance = insurance
                     break
     return patient
-=======
-                
-            
-
-                
->>>>>>> Stashed changes
