@@ -110,14 +110,6 @@ pytest --cov=validation
 - All data is stored in memory only and is lost when the program exits
 - No authentication or external database integration is included
 - The current edit workflow requires re-entering all patient fields
-- SSN/email uniqueness checks are not implemented in the existing code
 - Patient creation validation is currently performed during prompt collection rather than as a single raw-input batch
 
-## Future Improvements
-
-- Add comprehensive unit tests covering all validation cases
-- Implement full batch validation of raw input before patient creation
-- Add unique SSN and email validation against stored patients
-- Improve the edit workflow to support retaining existing field values
-- Add persistence via a database or file storage layer
 

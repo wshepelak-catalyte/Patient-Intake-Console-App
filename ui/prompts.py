@@ -1,4 +1,6 @@
-from storage.database import *
+"""Prompt helpers to gather and validate patient input from the user."""
+
+from storage.database import Database
 from validation.validators import (
     is_valid_name, is_valid_last_name, is_valid_ssn, is_valid_email,
     is_valid_street, is_valid_city, is_valid_state, zip_code_is_valid,

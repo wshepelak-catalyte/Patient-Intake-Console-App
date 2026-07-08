@@ -1,7 +1,10 @@
 """Tests for patient input validation helpers."""
 
+# pylint: disable=missing-function-docstring
+
 import pytest
 
+from storage.database import Database
 from validation.validators import (
     is_valid_age,
     is_valid_city,
@@ -17,6 +20,9 @@ from validation.validators import (
     is_valid_weight,
     zip_code_is_valid,
 )
+
+
+database = Database()
 
 
 def test_valid_name_values() -> None:
@@ -44,24 +50,24 @@ def test_invalid_last_name_values() -> None:
 
 
 def test_valid_ssn_values() -> None:
-    assert is_valid_ssn("123-45-6789")
+    assert is_valid_ssn(database, "123-45-6789")
 
 
 def test_invalid_ssn_values() -> None:
-    assert not is_valid_ssn("123456789")
-    assert not is_valid_ssn("12-345-6789")
-    assert not is_valid_ssn("abc-de-ghij")
+    assert not is_valid_ssn(database, "123456789")
+    assert not is_valid_ssn(database, "12-345-6789")
+    assert not is_valid_ssn(database, "abc-de-ghij")
 
 
 def test_valid_email_values() -> None:
-    assert is_valid_email("user@example.com")
-    assert is_valid_email("alice123@domain.org")
+    assert is_valid_email(database, "user@example.com")
+    assert is_valid_email(database, "alice123@domain.org")
 
 
 def test_invalid_email_values() -> None:
-    assert not is_valid_email("user@@example.com")
-    assert not is_valid_email("user@domain")
-    assert not is_valid_email("toolong" + "a" * 45 + "@x.com")
+    assert not is_valid_email(database, "user@@example.com")
+    assert not is_valid_email(database, "user@domain")
+    assert not is_valid_email(database, "toolong" + "a" * 45 + "@x.com")
 
 
 def test_valid_street_values() -> None:

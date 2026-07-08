@@ -1,10 +1,10 @@
-'''
-Main application file for the Patient Intake System.
-'''
+"""Main application file for the Patient Intake System."""
+
+from ui.menu import main_menu
+
 
 def main() -> None:
     """Main function to run the Patient Intake System."""
-    from ui.menu import main_menu
     main_menu()
 
 if __name__ == "__main__":

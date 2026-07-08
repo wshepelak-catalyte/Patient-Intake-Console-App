@@ -30,9 +30,11 @@ def is_valid_ssn(database : Database, ssn: str) -> bool:
 
 def is_valid_email(database : Database, email: str) -> bool:
     """Validates that the email is in a standard email format."""
-    return (bool(EMAIL_PATTERN.fullmatch(email)) and
-        bool(re.match(r"^.{5,50}$", email)) and 
-        is_unique_email(database, email))
+    return (
+        bool(EMAIL_PATTERN.fullmatch(email))
+        and bool(re.match(r"^.{5,50}$", email))
+        and is_unique_email(database, email)
+    )
 
 def is_valid_street(street: str) -> bool:
     """Validates that the street address is not empty and contains valid characters."""
