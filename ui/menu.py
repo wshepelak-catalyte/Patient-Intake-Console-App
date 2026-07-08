@@ -68,7 +68,7 @@ def view_patient_details() -> None:
     print("\n=== View Patient Details ===")
     patient_id = int(input("Enter the ID of the patient: ").strip())
     patient = database.view_patient_details(patient_id)
-    if patient != None:
+    if patient is not None:
         print(f"ID: {patient.id}")
         print(f"Name: {patient.first_name} {patient.last_name}")
         print(f"SSN: {patient.ssn}")
