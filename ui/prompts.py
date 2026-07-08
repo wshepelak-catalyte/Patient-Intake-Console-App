@@ -209,17 +209,23 @@ def collect_patient_edits(patient: dict) -> dict:
                 print("Invalid age. Enter a number between 0 and 120.")
         elif field == "7":
             while True:
-                height = input("Enter new height in centimeters (optional, press Enter to skip): ").strip()
-                if is_valid_height(height):
-                    patient_edits["height"] = height
+                height_raw = input("Enter new height in centimeters (optional, press Enter to skip): ").strip()
+                height_val = is_valid_height(height_raw)
+                
+                if height_val is None or height_val != -1:
+                    patient_edits["height"] = height_val
                     break
+
                 print("Invalid height. Enter a number between 0 and 108 or leave blank.")
         elif field == "8":
             while True:
-                weight = input("Enter new weight in kilograms (optional, press Enter to skip): ").strip()
-                if is_valid_weight(weight):
-                    patient_edits["weight"] = weight
+                weight_raw = input("Enter new weight in kilograms (optional, press Enter to skip): ").strip()
+                weight_val = is_valid_weight(weight_raw)
+
+                if weight_val is None or weight_val != -1:
+                    patient_edits["weight"] = weight_val
                     break
+                
                 print("Invalid weight. Enter a number between 0 and 1400 or leave blank.")
         elif field == "9":
             while True:
