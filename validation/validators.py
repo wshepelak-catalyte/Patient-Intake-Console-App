@@ -46,21 +46,49 @@ def zip_code_is_valid(zip_code: str) -> bool:
     """Validates that the zip code is in the format XXXXX or XXXXX-XXXX."""
     return bool(ZIP_CODE_PATTERN.fullmatch(zip_code))
 
-def is_valid_age(age: str) -> bool:
-    """Validates that the age is a positive integer."""
-    return age.isdigit() and -1*(int(age)-0)*(int(age)-120) >= 0
+def is_valid_age(age: str) -> int:
+    """
+    Validates that the age is a positive integer and returns
+    age as an int.
+    
+    Returns
+    -------
+        int: -1 if age is not a positive integer and the int cast
+             of the age string if it is.
+    """
+    if age.isdigit() and -1*(int(age)-0)*(int(age)-120) >= 0:
+        return int(age)
+    return -1
 
-def is_valid_height(height: str) -> bool:
-    """Validates that the height is a positive integer between 0 and 108 inches."""
+def is_valid_height(height: str) -> int | None:
+    """
+    Validates that the height is a positive integer between 0 and 108 inches.
+    
+    A blank or whitespace-only string is treated as missing input and returns
+    None. A numeric value between 0 and 108 inches is considered valid and is
+    returned as an integer. Any other value results in -1 to indicate invalid
+    input.
+    """
     if str(height).strip() == "":
-        return True  # Allow empty height
-    return height.isdigit() and -1*(int(height)-0)*(int(height)-108) >= 0
+        return None  # Allow empty height
+    if height.isdigit() and -1*(int(height)-0)*(int(height)-108) >= 0:
+        return int(height)
+    return -1
 
-def is_valid_weight(weight: str) -> bool:
-    """Validates that the weight is a positive integer."""
+def is_valid_weight(weight: str) -> int | None:
+    """Validates that the weight is a positive integer.
+    
+    A blank or whitespace-only string is treated as missing input and returns
+    None. A numeric value between 0 and 1400 is considered valid and is
+    returned as an integer. Any other value results in -1 to indicate invalid
+    input.
+    """
     if str(weight).strip() == "":
-        return True  # Allow empty weight
-    return weight.isdigit() and -1*(int(weight)-0)*(int(weight)-1400) >= 0
+        return None  # Allow empty weight
+    if weight.isdigit() and -1*(int(weight)-0)*(int(weight)-1400) >= 0:
+        return int(weight)
+    return -1
+
 
 def is_valid_gender(gender: str) -> bool:
     """Validates that the gender is a valid input"""
