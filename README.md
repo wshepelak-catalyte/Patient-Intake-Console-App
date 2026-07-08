@@ -112,4 +112,7 @@ python -m pytest
 - The current edit workflow requires re-entering all patient fields
 - Patient creation validation is currently performed during prompt collection rather than as a single raw-input batch
 
-
+## Contributors
+<a href="https://github.com/wshepelak-catalyte/Patient-Intake-Console-App/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=wshepelak-catalyte/Patient-Intake-Console-App"/>
+</a>
