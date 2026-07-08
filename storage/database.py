@@ -1,9 +1,13 @@
+""" In-memory database for managing patient records. """
+
 from models.address import Address
 from models.gender import Gender
 from models.patient import Patient
-from ui.prompts import collect_raw_patient_input
+
 
 class Database:
+    """Database class to manage patient records in memory."""
+
     def __init__(self):
         """Initialize the in-memory database with an empty patient list."""
         self.patients = []
@@ -53,7 +57,6 @@ class Database:
             list: A list of Patient objects.
         """
         return self.patients
-    
     def save_all_patients(self, patients: list) -> None:
         """Updates the in-memory patient list.
         Args:
@@ -76,7 +79,6 @@ class Database:
                 self.save_all_patients(patients)
                 return True
         return False
-    
     def delete_patient(self, patient_id: int) -> bool:
         """Deletes a patient from the database by ID.
         Args:

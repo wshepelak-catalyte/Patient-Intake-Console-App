@@ -14,7 +14,7 @@ from gender import Gender
 @dataclass
 class Patient:
     """
-    Paitent class to represent a patient with personal and medical information.
+    Patient class to represent a patient with personal and medical information.
 
     Attributes:
         id (int): The unique identifier for the patient, auto-assigned starting from 1.
