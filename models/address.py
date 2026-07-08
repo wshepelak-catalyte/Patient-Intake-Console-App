@@ -20,3 +20,15 @@ class Address:
     city: str
     state: str
     zip_code: str
+
+    def __str__(self):
+        """
+        Return a human-readable string representation of the address, including
+        street, city, state, and ZIP code, each on its own line.
+        """
+        return (
+            f"street: {self.street}\n"
+            f"city: {self.city}\n"
+            f"state: {self.state}\n"
+            f"zip code: {self.zip_code}\n"
+        )
