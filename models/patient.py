@@ -36,9 +36,9 @@ class Patient:
     last_name: str = ""
     ssn: str = ""
     email: str = ""
-    address: 'Address' = None
-    age: int = ""
-    height: Optional[int] = None
-    weight: Optional[int] = None
+    address: 'Address' | None = None
+    age: int = 0
+    height: Optional[int] = 0
+    weight: Optional[int] = 0
     gender: 'Gender' = None
     insurance: str = ""
