@@ -34,7 +34,6 @@ def main_menu() -> None:
             break
         else:
             print("Invalid choice. Please enter a number between 1 and 6.")
-            
 
 def list_patients() -> None:
     """Displays the list of patients stored in the database."""
@@ -117,7 +116,12 @@ def delete_patient() -> None:
         print("Patient not found.")
         return
 
-    confirm = input(f"Are you sure you want to delete {patient.first_name} {patient.last_name}? (y/n): ").strip().lower()
+    confirm_prompt = (
+        f"Are you sure you want to delete {patient.first_name}"
+        f" {patient.last_name}? (y/n): "
+    )
+    confirm = input(confirm_prompt).strip().lower()
+
     if confirm == 'y':
         database.delete_patient(patient_id)
         print("Patient deleted successfully.")
