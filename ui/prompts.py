@@ -175,7 +175,8 @@ def collect_patient_edits(database: Database, patient_id: int) -> Patient:
                     break
         elif field == "3":
             while True:
-                ssn = input("Enter new social security number (SSN) in format XXX-XX-XXXX: ").strip()
+                ssn = input(
+                    "Enter new social security number (SSN) in format XXX-XX-XXXX: ").strip()
                 if is_valid_ssn(database, ssn):
                     patient.ssn = ssn
                     break
@@ -215,14 +216,16 @@ def collect_patient_edits(database: Database, patient_id: int) -> Patient:
                     break
         elif field == "7":
             while True:
-                height_raw = input("Enter new height in centimeters (optional, press Enter to skip): ").strip()
+                height_raw = input(
+                    "Enter new height in centimeters (optional, press Enter to skip): ").strip()
                 height_val = is_valid_height(height_raw)
                 if height_val is None or height_val != -1:
                     patient.height = height_val
                     break
         elif field == "8":
             while True:
-                weight_raw = input("Enter new weight in kilograms (optional, press Enter to skip): ").strip()
+                weight_raw = input(
+                "Enter new weight in kilograms (optional, press Enter to skip): ").strip()
                 weight_val = is_valid_weight(weight_raw)
                 if weight_val is None or weight_val != -1:
                     patient.weight = weight_val
