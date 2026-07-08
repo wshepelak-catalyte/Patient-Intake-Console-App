@@ -23,7 +23,7 @@ A console-based patient intake system that manages patient records entirely in m
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/<your-org>/Patient-Intake-Console-App.git
+   git clone https://github.com/wshepelak-catalyte/Patient-Intake-Console-App.git
    cd Patient-Intake-Console-App
    ```
 
