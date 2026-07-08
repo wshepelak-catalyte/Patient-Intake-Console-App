@@ -58,6 +58,8 @@ def create_patient() -> None:
 
     print("\n=== Create a New Patient ===")
     patient_input = collect_raw_patient_input(database)
+    if patient_input is None:
+        return
     database.create_patient(patient_input)
     print("Patient created successfully.")
 
