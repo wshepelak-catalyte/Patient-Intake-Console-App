@@ -57,11 +57,7 @@ class Database:
             list: A list of Patient objects.
         """
         return self.patients
-<<<<<<< Updated upstream
-
-=======
     
->>>>>>> Stashed changes
     def save_all_patients(self, patients: list) -> None:
         """Updates the in-memory patient list.
         Args:
