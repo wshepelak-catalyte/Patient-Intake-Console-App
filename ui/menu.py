@@ -46,12 +46,16 @@ def list_patients() -> None:
         return
 
     for patient in patients:
+<<<<<<< Updated upstream
         print(
             f"ID: {patient.id}\n"
             f"Name: {patient.first_name} {patient.last_name}\n"
             f"Age: {patient.age}\n"
             f"Gender: {patient.gender.value}\n"
  )
+=======
+        print(f"ID: {patient.id}\nName: {patient.first_name} {patient.last_name}\nSSN: {patient.ssn}\nEmail: {patient.email}\nAddress: {patient.address.street}, {patient.address.city}, {patient.address.state} {patient.address.zip_code}\nAge: {patient.age}\nHeight: {patient.height}\nWeight: {patient.weight}\nGender: {patient.gender.value}\nInsurance: {patient.insurance}\n")
+>>>>>>> Stashed changes
 
 def create_patient() -> None:
     """Prompts the user for patient details and saves the new patient."""
@@ -99,9 +103,14 @@ def edit_patient() -> None:
         return
 
     print(f"Editing patient: {patient.first_name} {patient.last_name}")
+<<<<<<< Updated upstream
     raw_input = collect_patient_edits(database, patient_id)  # Collect new patient data
     database.edit_patient(patient_id, raw_input)
 
+=======
+    raw_input = collect_patient_edits(patient_id)  # Collect new patient data
+    patient = database.edit_patient(patient_id, raw_input)  # Update the patient in the database
+>>>>>>> Stashed changes
 
 def delete_patient() -> None:
     """Deletes a specified patient from the database after confirmation."""

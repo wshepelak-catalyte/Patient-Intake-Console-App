@@ -5,7 +5,7 @@ details, optional physical measurements, gender, insurance provider, and the
 nested Address object associated with each patient.
 """
 from dataclasses import dataclass
-from typing import Optional
+from typing import Optional, override
 
 from models.address import Address
 from models.gender import Gender
@@ -36,9 +36,25 @@ class Patient:
     last_name: str = ""
     ssn: str = ""
     email: str = ""
-    address: 'Address' | None = None
+    address: 'Address' = None
     age: int = 0
     height: Optional[int] = 0
     weight: Optional[int] = 0
     gender: 'Gender' = None
     insurance: str = ""
+
+    @override
+    def __str__(self) -> str:
+        """Returns a string representation of the Patient object."""
+        return (
+            f"Patient ID: {self.id}\n"
+            f"Name: {self.first_name} {self.last_name}\n"
+            f"SSN: {self.ssn}\n"
+            f"Email: {self.email}\n"
+            f"Address: {self.address}\n"
+            f"Age: {self.age}\n"
+            f"Height: {self.height}\n"
+            f"Weight: {self.weight}\n"
+            f"Gender: {self.gender.value if self.gender else 'N/A'}\n"
+            f"Insurance: {self.insurance}\n"
+        )
