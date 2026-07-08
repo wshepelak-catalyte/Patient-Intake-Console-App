@@ -51,7 +51,7 @@ class Patient:
             f"Name: {self.first_name} {self.last_name}\n"
             f"SSN: {self.ssn}\n"
             f"Email: {self.email}\n"
-            f"Address: {self.address}\n"
+            f"Address: {str(self.address)}\n"
             f"Age: {self.age}\n"
             f"Height: {self.height}\n"
             f"Weight: {self.weight}\n"

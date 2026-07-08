@@ -9,7 +9,11 @@ def test_patient_str_representation(mocker):
     mock_last_name = "Doe"
     mock_ssn = "123-45-6789"
     mock_email = "john.doe@example.com"
-    mock_address = "123 Main St, Anytown, USA"
+    mock_address = mocker.Mock()
+    mock_address.street = "123 Main St"
+    mock_address.city = "Anytown"
+    mock_address.state = "CA"
+    mock_address.zip_code = "12345"
     mock_age = 30
     mock_height = 70
     mock_weight = 180
@@ -17,20 +21,23 @@ def test_patient_str_representation(mocker):
     mock_gender.value = "Male"
     mock_insurance = "Blue Cross"
 
-    patient = Patient(id=1, first_name=mock_name, last_name=mock_last_name, ssn=mock_ssn,
-                      email=mock_email, address=mock_address, age=mock_age, height=mock_height, weight=mock_weight,
-                      gender=mock_gender, insurance=mock_insurance)
-    
+    patient = Patient(
+        id=1, first_name=mock_name, last_name=mock_last_name, ssn=mock_ssn,
+        address=mock_address, email=mock_email, age=mock_age, height=mock_height,
+        weight=mock_weight, gender=mock_gender, insurance=mock_insurance
+    )
+
     expected_str = (
-        f"Patient ID: 1\n"
+        "Patient ID: 1\n"
         f"Name: {mock_name} {mock_last_name}\n"
         f"SSN: {mock_ssn}\n"
         f"Email: {mock_email}\n"
-        f"Address: {mock_address.__str__().strip()}\n"
+        f"Address: {str(mock_address)}\n"
         f"Age: {mock_age}\n"
         f"Height: {mock_height}\n"
         f"Weight: {mock_weight}\n"
         f"Gender: {mock_gender.value}\n"
         f"Insurance: {mock_insurance}\n"
     )
+
     assert str(patient) == expected_str
