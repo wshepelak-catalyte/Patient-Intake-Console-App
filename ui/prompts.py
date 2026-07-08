@@ -28,10 +28,10 @@ def collect_raw_patient_input(database: Database) -> dict | None:
     zip_code = input("Enter zip code (XXXXX or XXXXX-XXXX): ").strip()
     age_raw = input("Enter age: ").strip()
     height_raw = input(
-        "Enter height in centimeters (optional, press Enter to skip): "
+        "Enter height in inches (optional, press Enter to skip): "
     ).strip()
     weight_raw = input(
-        "Enter weight in kilograms (optional, press Enter to skip): "
+        "Enter weight in pounds (optional, press Enter to skip): "
     ).strip()
     gender = input("Enter gender (Male/Female/Other): ").strip()
     insurance = input("Enter insurance provider: ").strip()
@@ -224,7 +224,7 @@ def collect_patient_edits(database: Database, patient_id: int) -> Patient:
         elif field == "7":
             while True:
                 height_raw = input(
-                    "Enter new height in centimeters (optional, press Enter to skip): ").strip()
+                    "Enter new height in inches (optional, press Enter to skip): ").strip()
                 height_val = is_valid_height(height_raw)
                 if height_val is None or height_val != -1:
                     patient.height = height_val
@@ -232,7 +232,7 @@ def collect_patient_edits(database: Database, patient_id: int) -> Patient:
         elif field == "8":
             while True:
                 weight_raw = input(
-                "Enter new weight in kilograms (optional, press Enter to skip): ").strip()
+                "Enter new weight in pounds (optional, press Enter to skip): ").strip()
                 weight_val = is_valid_weight(weight_raw)
                 if weight_val is None or weight_val != -1:
                     patient.weight = weight_val
