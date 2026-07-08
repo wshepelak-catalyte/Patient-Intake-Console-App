@@ -2,7 +2,7 @@
 
 from unittest import mock
 from models.patient import Patient
-
+from models.address import Address
 
 def test_patient_str_representation():
     """Test the string representation of the Patient class."""
@@ -10,11 +10,12 @@ def test_patient_str_representation():
     mock_last_name = "Doe"
     mock_ssn = "123-45-6789"
     mock_email = "john.doe@example.com"
-    mock_address = mock.Mock()
-    mock_address.street = "123 Main St"
-    mock_address.city = "Anytown"
-    mock_address.state = "CA"
-    mock_address.zip_code = "12345"
+    mock_address = Address(
+        street = "123 Main St",
+        city = "Anytown",
+        state = "CA",
+        zip_code = "12345"
+    )
     mock_age = 30
     mock_height = 70
     mock_weight = 180
