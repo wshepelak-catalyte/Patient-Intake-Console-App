@@ -49,15 +49,8 @@ def list_patients() -> None:
         print(
             f"ID: {patient.id}\n"
             f"Name: {patient.first_name} {patient.last_name}\n"
-            f"SSN: {patient.ssn}\n"
-            f"Email: {patient.email}\n"
-            f"Address: {patient.address.street}, {patient.address.city}, "
-            f"{patient.address.state} {patient.address.zip_code}\n"
             f"Age: {patient.age}\n"
-            f"Height: {patient.height}\n"
-            f"Weight: {patient.weight}\n"
             f"Gender: {patient.gender.value}\n"
-            f"Insurance: {patient.insurance}\n"
  )
 
 def create_patient() -> None:
@@ -75,7 +68,7 @@ def view_patient_details() -> None:
     print("\n=== View Patient Details ===")
     patient_id = int(input("Enter the ID of the patient: ").strip())
     patient = database.view_patient_details(patient_id)
-    if patient:
+    if patient != None:
         print(f"ID: {patient.id}")
         print(f"Name: {patient.first_name} {patient.last_name}")
         print(f"SSN: {patient.ssn}")
@@ -89,6 +82,10 @@ def view_patient_details() -> None:
         print(f"Weight: {patient.weight}")
         print(f"Gender: {patient.gender.value}")
         print(f"Insurance: {patient.insurance}")
+    else:
+        print("!!!===your request is invalid===!!!")
+        print("    Check the ID and try again")
+        print("!!!=============================!!!")
 
 
 def edit_patient() -> None:
