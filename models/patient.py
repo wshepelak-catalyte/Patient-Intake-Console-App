@@ -38,7 +38,7 @@ class Patient:
     email: str = ""
     address: 'Address' | None = None
     age: int = 0
-    height: Optional[int] = None
-    weight: Optional[int] = None
+    height: Optional[int] = 0
+    weight: Optional[int] = 0
     gender: 'Gender' = None
     insurance: str = ""
