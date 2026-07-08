@@ -57,6 +57,7 @@ class Database:
             list: A list of Patient objects.
         """
         return self.patients
+    
     def save_all_patients(self, patients: list) -> None:
         """Updates the in-memory patient list.
         Args:
@@ -76,7 +77,7 @@ class Database:
         for i, patient in enumerate(patients):
             if patient.id == patient_id:
                 patients[i] = updated_patient
-                self.save_all_patients(patients)
+                # self.save_all_patients(patients)
                 return True
         return False
 

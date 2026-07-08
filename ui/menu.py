@@ -59,7 +59,7 @@ def list_patients() -> None:
             f"Weight: {patient.weight}\n"
             f"Gender: {patient.gender.value}\n"
             f"Insurance: {patient.insurance}\n"
-        )
+ )
 
 def create_patient() -> None:
     """Prompts the user for patient details and saves the new patient."""
@@ -103,7 +103,7 @@ def edit_patient() -> None:
         return
 
     print(f"Editing patient: {patient.first_name} {patient.last_name}")
-    raw_input = collect_patient_edits(database, patient)  # Collect new patient data
+    raw_input = collect_patient_edits(database, patient_id)  # Collect new patient data
     database.edit_patient(patient_id, raw_input)
 
 
