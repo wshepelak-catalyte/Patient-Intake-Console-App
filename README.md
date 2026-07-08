@@ -102,7 +102,7 @@ The repository currently does not include dedicated unit tests. The validation l
 A recommended test command once tests are added:
 
 ```bash
-pytest --cov=validation
+python -m pytest
 ```
 
 ## Known Limitations
