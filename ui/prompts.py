@@ -78,15 +78,19 @@ def collect_raw_patient_input() -> dict:
     
     # Height with validation (optional)
     while True:
-        height = input("Enter height in centimeters (optional, press Enter to skip): ").strip()
-        if is_valid_height(height):
+        height_raw = input("Enter height in centimeters (optional, press Enter to skip): ").strip()
+        height_val = is_valid_height(height_raw)
+
+        if height_val is None or height_val != -1:
             break
         print("Invalid height. Enter a number between 0 and 108 or leave blank.")
     
     # Weight with validation (optional)
     while True:
-        weight = input("Enter weight in kilograms (optional, press Enter to skip): ").strip()
-        if is_valid_weight(weight):
+        weight_raw = input("Enter weight in kilograms (optional, press Enter to skip): ").strip()
+        weight_val = is_valid_weight(weight_raw)
+
+        if weight_val is None or weight_val != -1:
             break
         print("Invalid weight. Enter a number between 0 and 1400 or leave blank.")
     
@@ -116,8 +120,8 @@ def collect_raw_patient_input() -> dict:
             "zip_code": zip_code,
         },
         "age": age,
-        "height": height,
-        "weight": weight,
+        "height": height_val,
+        "weight": weight_val,
         "gender": gender,
         "insurance": insurance,
     }
@@ -225,7 +229,7 @@ def collect_patient_edits(patient: dict) -> dict:
                 if weight_val is None or weight_val != -1:
                     patient_edits["weight"] = weight_val
                     break
-                
+
                 print("Invalid weight. Enter a number between 0 and 1400 or leave blank.")
         elif field == "9":
             while True:
