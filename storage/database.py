@@ -57,7 +57,7 @@ class Database:
             list: A list of Patient objects.
         """
         return self.patients
-    
+
     def save_all_patients(self, patients: list) -> None:
         """Updates the in-memory patient list.
         Args:
