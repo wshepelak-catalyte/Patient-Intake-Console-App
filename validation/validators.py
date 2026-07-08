@@ -5,14 +5,14 @@ address component, age, height, weight, gender, and insurance provider.
 import re
 from validation.state_codes import STATE_CODE_TO_NAME
 
-NAME_PATTERN = re.compile(r"^[A-Za-z.,'-]{1,30}$")
+NAME_PATTERN = re.compile(r"^[A-Za-z .,'-]{1,30}$")
 SSN_PATTERN = re.compile(r"^\d{3}-\d{2}-\d{4}$")
 EMAIL_PATTERN = re.compile(r"^[A-Za-z0-9]+@[A-Za-z]+\.[A-Za-z]+$")
 STREET_PATTERN = re.compile(r"^[A-Za-z0-9\s.,'-]{1,30}$")
 CITY_PATTERN = re.compile(r"^[A-Za-z\s.,'-]{1,30}$")
 STATE_CODE_PATTERN = re.compile(r"^[A-Z]{2}$")
 ZIP_CODE_PATTERN = re.compile(r"^\d{5}(-\d{4})?$")
-INSURANCE_PATTERN = re.compile(r"^[A-Za-z.,'-]{1,50}")
+INSURANCE_PATTERN = re.compile(r"^[A-Za-z .,'-]{1,50}$")
 
 def is_valid_name(name: str) -> bool:
     """Validates that the name contains only letters and is not empty."""
