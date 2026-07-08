@@ -7,8 +7,8 @@ nested Address object associated with each patient.
 from dataclasses import dataclass
 from typing import Optional
 
-from address import Address
-from gender import Gender
+from models.address import Address
+from models.gender import Gender
 
 # pylint: disable=too-many-instance-attributes
 @dataclass

@@ -79,6 +79,7 @@ class Database:
                 self.save_all_patients(patients)
                 return True
         return False
+
     def delete_patient(self, patient_id: int) -> bool:
         """Deletes a patient from the database by ID.
         Args:
