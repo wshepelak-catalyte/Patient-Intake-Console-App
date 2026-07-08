@@ -1,4 +1,4 @@
-from storage import database
+from storage.database import *
 from validation.validators import (
     is_valid_name, is_valid_last_name, is_valid_ssn, is_valid_email,
     is_valid_street, is_valid_city, is_valid_state, zip_code_is_valid,
@@ -6,7 +6,7 @@ from validation.validators import (
     is_valid_insurance
 )
 
-def collect_raw_patient_input() -> dict:
+def collect_raw_patient_input(database : Database) -> dict:
     """
     Collects and validates patient input from the user.
 
@@ -30,14 +30,14 @@ def collect_raw_patient_input() -> dict:
     # SSN with validation
     while True:
         ssn = input("Enter social security number (SSN) in format XXX-XX-XXXX: ").strip()
-        if is_valid_ssn(ssn):
+        if is_valid_ssn(database, ssn):
             break
         print("Invalid SSN. Use format XXX-XX-XXXX (e.g., 123-45-6789).")
     
     # Email with validation
     while True:
         email = input("Enter email address: ").strip()
-        if is_valid_email(email):
+        if is_valid_email(database, email):
             break
         print("Invalid email. Use format name@domain.com.")
     
@@ -126,7 +126,7 @@ def collect_raw_patient_input() -> dict:
         "insurance": insurance,
     }
 
-def collect_patient_edits(patient: dict) -> dict:
+def collect_patient_edits(database : Database, patient: dict) -> dict:
     """
     Collects and validates patient edits from the user.
 
@@ -168,14 +168,14 @@ def collect_patient_edits(patient: dict) -> dict:
         elif field == "3":
             while True:
                 ssn = input("Enter new social security number (SSN) in format XXX-XX-XXXX: ").strip()
-                if is_valid_ssn(ssn):
+                if is_valid_ssn(database, ssn):
                     patient_edits["ssn"] = ssn
                     break
                 print("Invalid SSN. Use format XXX-XX-XXXX (e.g., 123-45-6789).")
         elif field == "4":
             while True:
                 email = input("Enter new email address: ").strip()
-                if is_valid_email(email):
+                if is_valid_email(database, email):
                     patient_edits["email"] = email
                     break
                 print("Invalid email. Use format user@domain.com.")

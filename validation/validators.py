@@ -4,6 +4,8 @@ address component, age, height, weight, gender, and insurance provider.
 """
 import re
 from validation.state_codes import STATE_CODE_TO_NAME
+from validation.duplicates import is_unique_ssn, is_unique_email
+from storage.database import Database
 
 NAME_PATTERN = re.compile(r"^[A-Za-z .,'-]{1,30}$")
 SSN_PATTERN = re.compile(r"^\d{3}-\d{2}-\d{4}$")
@@ -22,13 +24,15 @@ def is_valid_last_name(last_name: str) -> bool:
     """Validates that the last name contains only letters and is not empty."""
     return bool(NAME_PATTERN.fullmatch(last_name))
 
-def is_valid_ssn(ssn: str) -> bool:
-    """Validates that the SSN is in the format XXX-XX-XXXX."""
-    return bool(SSN_PATTERN.fullmatch(ssn))
+def is_valid_ssn(database : Database, ssn: str) -> bool:
+    """Validates that the SSN is in the format XXX-XX-XXXX and unique."""
+    return bool(SSN_PATTERN.fullmatch(ssn)) and is_unique_ssn(database, ssn)
 
-def is_valid_email(email: str) -> bool:
+def is_valid_email(database : Database, email: str) -> bool:
     """Validates that the email is in a standard email format."""
-    return bool(EMAIL_PATTERN.fullmatch(email)) and bool(re.match(r"^.{5,50}$", email))
+    return (bool(EMAIL_PATTERN.fullmatch(email)) and
+        bool(re.match(r"^.{5,50}$", email)) and 
+        is_unique_email(database, email))
 
 def is_valid_street(street: str) -> bool:
     """Validates that the street address is not empty and contains valid characters."""

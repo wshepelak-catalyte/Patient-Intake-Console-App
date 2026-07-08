@@ -54,7 +54,7 @@ def list_patients() -> None:
 def create_patient() -> None:
     print("\n=== Create a New Patient ===")
     #database.create_patient()
-    patient_input = collect_raw_patient_input()
+    patient_input = collect_raw_patient_input(database)
     database.create_patient(patient_input)
     print("Patient created successfully.")
 
@@ -83,7 +83,7 @@ def edit_patient() -> None:
         return
 
     print(f"Editing patient: {patient.first_name} {patient.last_name}")
-    raw_input = collect_patient_edits(patient)  # Collect new patient data
+    raw_input = collect_patient_edits(database , patient)  # Collect new patient data
     patient = database.edit_patient(patient_id, raw_input)  # Update the patient in the database
 
 def delete_patient() -> None:
