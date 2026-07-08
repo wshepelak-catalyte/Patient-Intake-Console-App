@@ -37,7 +37,7 @@ A console-based patient intake system that manages patient records entirely in m
 3. Install development tooling if desired:
 
    ```bash
-   pip install pylint pytest pytest-cov
+   pip install pylint pytest
    ```
 
 > Note: The current repository does not require any external runtime dependencies beyond the Python standard library.
