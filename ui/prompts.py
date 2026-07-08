@@ -75,8 +75,10 @@ def collect_raw_patient_input(database : Database) -> dict:
     
     # Age with validation
     while True:
-        age = input("Enter age: ").strip()
-        if is_valid_age(age):
+        age_raw = input("Enter age: ").strip()
+        age_val = is_valid_age(age_raw)
+
+        if age_val != -1:
             break
         print("Invalid age. Enter a number between 0 and 120.")
     
@@ -123,7 +125,7 @@ def collect_raw_patient_input(database : Database) -> dict:
             "state": state,
             "zip_code": zip_code,
         },
-        "age": age,
+        "age": age_val,
         "height": height_val,
         "weight": weight_val,
         "gender": gender,
@@ -203,9 +205,10 @@ def collect_patient_edits(database : Database, patient_id: int) -> patient:
                     break
         elif field == "6":
             while True:
-                age = input("Enter new age: ").strip()
-                if is_valid_age(age):
-                    patient.age = int(age)
+                age_raw = input("Enter new age: ").strip()
+                age_val = is_valid_age(age_raw)
+                if age_val != -1:
+                    patient.age = age_val
                     break
         elif field == "7":
             while True:
